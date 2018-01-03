@@ -205,7 +205,7 @@ Launch the \textbf{STM32CubeMX (STMCube)} utility either from the start menu ent
 
 % REVISE
 \noindent
-The \textit{New Project} window should open\textemdash here you will select the particular STM32 device that STMCube will generate a project for. The processor in use on the STM32F072 Discovery board is the STM32F072R8. You can quickly narrow down the available selections by selecting the following criteria in the \textit{MCU Filters} section.
+The \textit{New Project} window should open\textemdash here, select the particular STM32 device for which STMCube will generate a project. The processor in use on the STM32F072 Discovery board is the STM32F072R8. You can quickly narrow down the available selections by selecting the following criteria in the \textit{MCU Filters} section.
 \begin{itemize}
 	\item Select \textbf{STM32F0} in the \textit{Series} filter
 	\item Select \textbf{STM32F0x2} in the \textit{Lines} filter
@@ -399,15 +399,15 @@ This section provides an overview of embedded programs, memory-mapped peripheral
 \section{Basic Design of an Embedded Program}
 
 
-The typical layout of an embedded program is very different from most standard programming systems. Figure \vref{programFlow} shows a comparison between devices running an operating system and the operation of many embedded applications. 
-In a computer with an operating system, there are layers of supervisory code which manage low-level system operations and provide frameworks for resource sharing between multiple applications. In these systems, a user application can exit, and the operating system will continue to operate and clean up afterward. In contrast, many embedded applications execute directly on the processor core, and no operating system exists to launch or clean up after applications exit. This style of development is called ``bare-metal'' programming. 
+The typical layout of an embedded program differs significantly from most standard programming systems: figure \vref{programFlow} shows a comparison between devices running an operating system and the operation of many embedded applications. 
+In a computer with an operating system, layers of supervisory code manage low-level system operations and provide frameworks for resource sharing between multiple applications. In these systems, a user application may exit, but the operating system will continue to operate and clean up afterward. In contrast, many embedded applications execute directly on the processor core, and no operating system exists to launch or clean up after applications exit. This style of development is called ``bare-metal'' programming. 
 
-At the beginning of every STM32F0 binary executable, there is a jump to a small region of code called the \textit{Reset Vector}. This reset vector is always executed directly after a hardware reset and is responsible for ensuring that the stack, heap, and processor clock are initialized to basic settings, allowing more complex code to operate.
+The beginning of every STM32F0 binary executable contains a jump to a small region of code called the \textit{Reset Vector}. This reset vector always executes directly after a hardware reset and is responsible for ensuring that the stack, heap, and processor clock initialize to basic settings\textemdash allowing more complex code to operate.
 
-Typically most of the initialization code is not within the reset vector itself but is scattered throughout the support files that ST Microelectronics and the MDK:ARM toolchain provide. The HAL library is typically used to perform less-critical initialization steps such as clock speed configuration at the beginning of the user's application. 
+Most of the initialization code typically lies outside the reset vector itself: scattered throughout the support files that ST Microelectronics and the MDK:ARM toolchain provide. The HAL library is typically used to perform less-critical initialization steps such as clock speed configuration at the beginning of the user's application. 
 
 % PASSIVE VOICE, REVISE
-After device initialization, the startup code calls the \texttt{main()} function within the user's application. Typically, embedded programs begin by configuring hardware peripherals they require and then enter into an infinite loop containing the majority of the application. This endless loop is always required since the main function of an embedded program should never return. Unlike a machine with an operating system, there is nothing to catch the processor's execution after the main program exits. This means that the behavior of the processor after returning is undefined and could range from resetting the device to executing random data.
+After device initialization, the startup code calls the \texttt{main()} function within the user's application; embedded programs generally begin by configuring hardware peripherals that they require and subsequently enter into an infinite loop where the majority of the application resides. This endless loop is necessary since the main function of an embedded program should never return. Unlike a machine with an operating system, nothing catches the processor's execution after the main program exits; this means that the behavior of the processor after returning is undefined\textemdash which could range from resetting the device to executing random data!
 
 \begin{figure}[]
     \centering\includegraphics[width=.75\textwidth]{programFlow}
@@ -418,9 +418,9 @@ After device initialization, the startup code calls the \texttt{main()} function
 
 \section{Introduction to Device Peripherals}
 
-The last lab section introduced the ``blinky'' example program. (shown in Figure \vref{blinky1}) This simple program repeatedly toggles pins on the STM32F0 using the GPIO hardware abstraction library drivers. This results in a pattern of alternating flashes as the pins used, connect to LEDs on the STM32F072 Discovery board. 
+The last lab section introduced the ``blinky'' example program. (shown in Figure \vref{blinky1}) This simple program repeatedly toggles pins on the STM32F0 using the GPIO hardware abstraction library (HAL) drivers; this example produces a pattern of alternating flashes on the pins used, which connect to LEDs on the STM32F072 Discovery board. 
 
-Taking a closer look at the program structure shows that it begins by initializing the HAL library and system clock. Afterward, it initializes the specific GPIO peripheral controlling the desired pins and enters an infinite \texttt{while} loop. Although many of the function calls in this example program are relatively straightforward to understand, an important question to consider is how the HAL library functions modify the physical peripherals of the STM32F0 device.
+A closer look at the program structure reveals that it begins by initializing the HAL library and system clock; it then initializes the specific GPIO peripheral controlling the desired pins and enters an infinite \texttt{while} loop. Although many of the function calls in this example program are straightforward and simple to understand, an important question to consider is how the HAL library functions modify the physical peripherals of the STM32F0 device.
 
 \subsection{Memory-Mapped Peripherals on the STM32F0}
 
