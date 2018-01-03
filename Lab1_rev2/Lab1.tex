@@ -91,7 +91,7 @@
 %%%%       Chapter 1: The STM32F072 Discovery and Toolchain                                  %%%%
 %%%%                                                                                         %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\setcounter{chapter}{-1} % Manually adjust chapter counter to number before desired chapter heading
+\setcounter{chapter}{-1} % Manually adjust chapter counter to number before desired chapter heading
 \begin{document}
 	
 
@@ -101,7 +101,7 @@
 \chapter{The STM32F072 Discovery and Toolchain}
 \setSectionType{Intro}
 \section{Introduction to the STM32F072 Discovery Board}\index{Introduction to the STM32F072 Discovery Board}
-This lab introduces the STM32F072 Discovery board from ST Microelectronics and guides through the creation of a simple application. The exercises in this lab form the basic starting point for all future activities. After completing this lab, you will understand the basic operation and structure of an MDK:ARM code project, and be able to use ST provided utilities to generate a pre-configured project template. 
+This lab introduces the STM32F072 Discovery board from ST Microelectronics and guides through the creation of a simple application. The exercises in this lab form the basic starting point for all future activities. After completing this lab, you will understand the basic operation and structure of an MDK:ARM code project and be able to use ST provided utilities to generate a pre-configured project template. 
 
 \begin{figure}[h]
 	\centering\includegraphics[width=\textwidth]{discovery_marked}
@@ -109,18 +109,19 @@ This lab introduces the STM32F072 Discovery board from ST Microelectronics and g
 \end{figure}
 
 % PASSIVE VOICE
-One unique aspect of embedded systems programming is that the generated code is not typically run on the system used to develop the software itself. Instead, the compiled binary is loaded onto an external device for testing and debugging. Because of this, you'll be using a generic test board containing a processor and peripherals to target during development. 
+% Resolved?
+One unique aspect of embedded systems programming is that the generated code typically does not run on the system used to develop the software; instead, the compiled binary is loaded onto an external device for testing and debugging. You'll be using a generic test board containing a processor and peripherals to target during development. 
 
 The STM32F072 Discovery board is a low-cost environment which provides all of the hardware you need to start developing basic projects. There are four main parts of the Discovery board: 
 
 \subsubsection*{STM32F072R8 ARM Cortex-M0 Processor ({\color{yellow!80!black}YELLOW})}
-The STM32F072R8 features an ARM Cortex-M0 RISC core that can operate up to 48 MHz clock frequency. It has 16 Kbytes of static RAM and 64 Kbytes of Flash memory for program and data storage. It operates on voltages between 2.0 and 3.6 V and is contained in a 64-pin low-quad-flat-pack (LQFP) package. Typically these labs will use STM32F0 as a shorter name for the STM32F072R8.
+The STM32F072R8 features an ARM Cortex-M0 RISC core that can operate up to 48 MHz clock frequency. It has 16 Kbytes of static RAM and 128 Kbytes of Flash memory for program and data storage. It operates on voltages between 2.0 and 3.6 V in a 64-pin low-quad-flat-pack (LQFP) package. Typically these labs will use STM32F0 as a shorter name for the STM32F072R8.
 
-The STM32F072R8 processor's name can be broken down into a couple of different parts. These parts identify the processor family, storage capabilities, and chip package the device has.
+The STM32F072R8 processor's name can be broken down into a couple of different parts. These parts identify the processor family to which it belongs, its storage capabilities, and chip package which the device possesses.
 
 \begin{itemize}
     \item \textbf{STM32F0} -- Identifies the chip as a Cortex-M0 produced by ST Microelectronics
-    \item \textbf{72} -- Specifies the device as part of the STM32F0x2 sub-family. Each sub-family has minor differences in design and peripherals offered.
+    \item \textbf{72} -- Specifies the device as part of the STM32F0x2 sub-family; each sub-family has minor differences in design and available peripherals.
     \item \textbf{R8} -- Indicates the FLASH (program storage) capacity and number of pins on the chip.  
 \end{itemize} 
 %\begin{description}
@@ -128,7 +129,7 @@ The STM32F072R8 processor's name can be broken down into a couple of different p
 %    \item [72] -- Specifies the device as part of the STM32F0x2 sub-family. Each sub-family has minor differences in design and peripherals offered.
 %    \item [R8] -- Indicates the FLASH (program storage) capacity and number of pins on the chip.  
 %\end{description} 
-Figure \vref{f072_family} shows the entire STM32F0x2 (USB line) device sub-family. From this figure it is possible to see that there are multiple groupings of STM32F0 devices, each featuring different capabilities and containing a wide variety of parts.
+Figure \vref{f072_family} shows the entire STM32F0x2 (USB line) device sub-family. This figure demonstrates that there are multiple groupings of STM32F0 devices, each featuring different capabilities and containing a variety of parts.
 
 \begin{figure}[]
 	\centering\includegraphics[width=\textwidth]{stm32f0x2_family}
@@ -137,23 +138,24 @@ Figure \vref{f072_family} shows the entire STM32F0x2 (USB line) device sub-famil
 \end{figure}
 
 \subsubsection*{ST-Link Chip Programmer and Debugger ({\color{red!90!black}RED})}
-Unlike developing on many traditional systems, the STM32F0 can not communicate directly with the machine compiling the code. There are multiple methods of transferring a compiled binary to the STM32F0 (some of which can communicate directly), but the most robust method is to use a hardware debugger.
+Unlike developing on many traditional systems, the STM32F0 cannot communicate directly with the machine that compiles the code; therefore, multiple methods of transferring a compiled binary to the STM32F0 are available (some can communicate directly), but the most robust method is a hardware debugger.
 
-Typically many device manufacturers prefer to develop their own debugging hardware. ST Microelectronics self-developed and preferred system is known as the ST-Link. The ST-Link is itself just another ARM processor, programmed to connect via USB to the host machine. On the host machine, a number of programs can connect to the ST-Link and download a binary to the target device. The protocol spoken between the ST-Link and the STM32F0 is known as serial wire debug (SWD).  We will discuss the details of this protocol in later chapters.
+Typically many device manufacturers prefer to develop their own debugging hardware. ST Microelectronics' self-developed and preferred system is the ST-Link: the ST-Link is itself just another ARM processor, programmed to connect via USB to the host machine. On the host machine, a number of programs can connect to the ST-Link and download a binary to the target device. The protocol between the ST-Link and the STM32F0 is \textit{serial wire debug} (SWD).  We will discuss the details of this protocol in later chapters.
 
 \subsubsection*{Processor Breakout Pins ({\color{blue!90!black}BLUE})}	
 
 % SPLIT INFINITIVE, PASSIVE
-The Discovery board ``breaks-out'' or exposes all of the STM32F0 processor pins on the two side connectors. These make it possible to easily build and connect additional circuits to the Discovery board. The STM32F0 can control most of the pins that are available. However, there are a few occupied with system functions, such as debugging, that should not be used for other purposes. 
+% Resolved?
+The Discovery board ``breaks-out'', or exposes, all of the STM32F0 processor pins on the two side connectors: these pins enable connecting additional circuits to the Discovery board. The STM32F0 can control most of the pins that are available. However, some pins handle system functions, such as debugging, which the user should not use for other purposes. 
 \newpage
 \subsubsection*{Experimental Hardware  ({\color{orange!90!black}ORANGE})}
-Although the STM32F072 Discovery development board is simple in comparison to other development platforms, it offers a few devices for experimentation.
+Although the STM32F072 Discovery development board is simple in comparison to other platforms, it offers several devices for experimentation.
 
 \begin{itemize}
-	\item Light emitting diodes (LEDs) in Green, Orange, Blue and Red
+	\item Light emitting diodes (LEDs) in Green, Orange, Blue, and Red
 	\item ``USER'' button for general purpose use
 	\item ``RESET'' button
-	\item Linear capacitive touch-sense bar
+	\item Linear capacitive-touch sense bar
 	\item L3GD20 3-axis MEMS Gyroscope
 	\item User programmable mini-USB 2.0 port
 \end{itemize}
@@ -170,28 +172,28 @@ Although the STM32F072 Discovery development board is simple in comparison to ot
 A \textit{toolchain} is a collection of software and hardware tools that create a complete system for developing, loading, and debugging embedded applications. 
 
 % PASSIVE VOICE 
-Figure \vref{mdk_toolchain} shows the components of the Kiel MDK:ARM toolchain. These provide a foundation for software projects and generate compiled ARM binaries. 
-The toolchain can be broken into two major components, the MDK tools and supporting software packs.
+Figure \vref{mdk_toolchain} shows the components of the Kiel MDK:ARM toolchain; these provide a foundation for software projects and generate compiled ARM binaries. 
+The toolchain consists of two major components, the MDK tools, and supporting software packs.
 
 \subsection*{MDK Tools}
-These tools form the basis of the Kiel MDK:ARM system. The major portion that we will be using is the {\textmu}Vision IDE which targets ARM Cortex-M devices. Although not utilized in this course, the DS-MDK tools target combination processors with both application-class (Cortex-A) and embedded (Cortex-M) systems. Both IDE systems use the ARM C/C++ cross-compiler, which generates ARM/THUMB2 assembly language code.
+These tools form the basis of the Kiel MDK:ARM system. The major portion that we will use is the {\textmu}Vision IDE, which targets ARM Cortex-M devices. Although not utilized in this course, the DS-MDK tools target combination processors with both application-class (Cortex-A) and embedded (Cortex-M) systems. Both IDE systems use the ARM C/C++ cross-compiler, which generates ARM/THUMB2 assembly language code.
 
-A cross-compiler describes a system which generates assembly languages foreign from the machine that it operates on. Although the MDK:ARM system is running on a conventional PC x86-x64 architecture, it generates ARM/THUMB2 codes compatible with the Cortex-M0 STM32F0 processor.
+A cross-compiler describes a system which generates assembly languages differing from the machine on which it operates. Although the MDK:ARM system runs on a conventional PC x86-x64 architecture, it generates ARM/THUMB2 codes compatible with the Cortex-M0 STM32F0 processor.
 
 \subsection*{Software Packs}
-Similar to many conventional programming environments, embedded systems rely on supporting software libraries. 
+Similar to many conventional programming environments, embedded systems rely on supporting software libraries; we describe several such libraries below.
 
 \begin{description}
 	\item[Startup Libraries] -- The STM32F0 processor requires a small amount of chip-specific initialization code to prepare the memory system and load the user application.  
-	\item[Device HAL] -- The STM32F0 devices have a large number of peripherals for tasks such as timing and communication. ST Microelectronics provides files which define the bindings between these and the user application. The \textit{hardware abstraction library} (HAL), provides a C/C++ API for controlling these peripherals.
-	\item[CMSIS Libraries] -- The ARM Cortex-M0 core also contains a number of advanced features. These core-peripherals are universal across all devices based on the same ARM core. The \textit{cortex microcontroller software interface standard} (CMSIS), provides a library API for interfacing with these features. 
+	\item[Device HAL] -- STM32F0 devices have a large number of peripherals for tasks such as timing and communication; ST Microelectronics provides files which define the bindings between these and the user application. The \textit{hardware abstraction library} (HAL), provides a C/C++ API for controlling these peripherals.
+	\item[CMSIS Libraries] -- The ARM Cortex-M0 core also contains a number of advanced features; these core-peripherals are universal across all devices based on the same ARM core. The \textit{cortex microcontroller software interface standard} (CMSIS), provides a library API for interfacing with these features. 
 	\item[Middleware] -- Middleware libraries provide support for higher-level functions such as file systems, USB, and graphics.
 \end{description}
 
 
 \setSectionType{Exercise}
 \section{Creating Your First Project}\index{Creating Your First Project}
-Although we will be using Kiel MDK ({\textmu}Vision) to develop the software for the exercises in this book, manually creating a project for an STM32F0 processor requires a significant amount of configuration. To bypass this, we will be using the STM32CubeMX utility to graphically configure the project parameters and generate a ready-to-use {\textmu}Vision project. 
+Although we will be using Kiel MDK ({\textmu}Vision) to develop the software for the exercises in this lab, manually creating a project for an STM32F0 processor requires significant configuration. To bypass this, we will use the STM32CubeMX utility to graphically configure the project parameters and generate a ready-to-use {\textmu}Vision project. 
 
 \subsection{Generating a Project in STM32CubeMX}
 \subsubsection*{Selecting the Correct Processor}
@@ -203,7 +205,7 @@ Launch the \textbf{STM32CubeMX (STMCube)} utility either from the start menu ent
 
 % REVISE
 \noindent
-The \textit{New Project} window should open, here you will select the particular STM32 device that STMCube will generate a project for. The processor in use on the STM32F072 Discovery board is the STM32F072R8. You can quickly narrow down the available selections by selecting the following criteria in the \textit{MCU Filters} section.
+The \textit{New Project} window should open\textemdash here you will select the particular STM32 device that STMCube will generate a project for. The processor in use on the STM32F072 Discovery board is the STM32F072R8. You can quickly narrow down the available selections by selecting the following criteria in the \textit{MCU Filters} section.
 \begin{itemize}
 	\item Select \textbf{STM32F0} in the \textit{Series} filter
 	\item Select \textbf{STM32F0x2} in the \textit{Lines} filter
@@ -326,15 +328,17 @@ Similar to the ST hardware abstraction library, ARM publishes a software API for
 \subsection{Compiling and Loading a Demo Program }
 \subsubsection{Auto-Generated Elements in Main.c}
 % REVISE
-Open the \textit{main.c} located within the Application/User folder. Within the template file, you will notice that in addition to the \texttt{main()} function there are a few others. These functions initialize the processor clock to the speed and source selected when STMCube generated the project. 
+% Check
+Open the \textit{main.c} located within the Application/User folder. You will notice that the program creates several functions, including the  \texttt{main()} function. The additional functions initialize the processor clock to the selected speed and source when STMCube generated the project. 
 
-Most embedded processors have flexible clock options that allow them to run from both internal or external clock signals and operate over a wide range of frequencies. The default processor speed that STMCube configures is usually 8 MHz. If you open the STMCube files in the project directory, you can select the Clock Configuration tab and view the clock settings.
+Most embedded processors have flexible clock options that allow them to run from both internal or external clock signals to operate over a wide range of frequencies. The default processor speed that STMCube configures is generally 8 MHz. If you open the STMCube files in the project directory, you can select the Clock Configuration tab and view the clock settings.
 
 % PASSIVE VOICE
-Within the main function, you will notice some automatically generated comments marking boundaries of user/auto generated code. These are used by STMCube to locate and preserve the user's code if the project is regenerated with new settings. You may decide to keep or remove these comments, but it is recommended that you manually backup changes to the \textit{main.c} file when regenerating code in STMCube regardless. 
+% Resolved?
+Within the main function, you will notice some automatically generated comments marking boundaries of user/auto-generated code. STMCube uses these boundaries to locate and preserve the user's code if the user regenerates the project with new settings. You may decide to keep or remove these comments, but we recommend that you manually backup changes to the \textit{main.c} file when regenerating code in STMCube. 
 
 \subsubsection{Blinky Example Code}
-Figure \vref{blinky1} contains a demo program that blinks the green and orange LEDs on the Discovery board. This program is provided in this lab's files as a replacement for the \textit{main.c} in your new project. Download this file from the assignment page and replace the main.c located in the \textit{src} folder of the project directory. 
+Figure \vref{blinky1} contains a demo program that blinks the green and orange LEDs on the Discovery board. This program (provided in the lab files) functions as a replacement for the \textit{main.c} in your new project. Download this file from the assignment page and replace the \textit{main.c} located in the \textit{src} folder of the project directory. 
 
 %\colorbox{gray!20!white}{
 %	\centering
@@ -353,13 +357,18 @@ Kiel {\textmu}Vision uses a custom build/dependency system similar to GNU-Make t
 If you generated the template project and copied the provided code correctly, you shouldn't have any errors in your completed result. Connect the STM32F072 Discovery board to the host computer using a mini-USB cable and the ST-Link USB port. 
 
 \begin{warning}
-	Remember that there are two ports available on the Discovery board. The center port is connected to the ST-Link debugger while the other is for user application use.
+	Remember that there are two ports available on the Discovery board: the center port connects to the ST-Link debugger, while the other is for user applications.
 \end{warning}
 
-After the Discovery board is connected, program the target STM32F0 through \textbf{Flash Menu \textrightarrow Download}. You will see a brief progress bar and status report in the {\textmu}Vision console, followed by a completion status message. 
+After connecting the Discovery board, program the target STM32F0 through \textbf{Flash Menu \textrightarrow Download}. You will see a brief progress bar and status report in the {\textmu}Vision console, followed by a completion status message. 
 
 % PASSIVE VOICE
-After the loading process has completed, press and release the \textbf{RESET} button on the Discovery board. Assuming that no errors were reported in the console, you should see the orange and green lights begin to flash in an alternating pattern. \\
+% Resolved?
+After the loading process has completed, press and release the \textbf{RESET} button on the Discovery board. Assuming that the console reports no errors, you should see the orange and green lights begin to flash in an alternating pattern. \\
+
+\begin{warning}
+	Remember to press the \textbf{RESET} button on your STM32F0 board after loading a project to your board; without it, your board will not begin the program you loaded.
+\end{warning}
 
 Congratulations, you are running a custom application on the STM32F0! 
 
