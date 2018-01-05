@@ -60,7 +60,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.4.2}Finding Register Definitions in ST's Header Files}{26}{subsection.1.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Searching the ``stm32f072xb.h'' File}{27}{section*.43}
+\contentsline {subsubsection}{Searching the \textit {stm32f072xb.h} File}{27}{section*.43}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.4.3}Bitwise Operations on Peripheral Registers}{28}{subsection.1.4.3}
 \defcounter {refsection}{0}\relax 
@@ -82,13 +82,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Hardware SysTick Delay}{32}{section*.53}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.5}Lab Assignment: Writing Basic I/O Code}{32}{section.1.5}
+\contentsline {subsection}{\numberline {1.4.6}Standard Integer Types}{32}{subsection.1.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.1}Configuring a GPIO Pin to Output and Blink an LED}{32}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.4.7}``Debouncing'' External Signals}{33}{subsection.1.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Converting the HAL Library Calls to Register Access}{32}{section*.54}
+\contentsline {section}{\numberline {1.5}Lab Assignment: Writing Basic I/O Code}{33}{section.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Changing to the New LEDs}{33}{section*.55}
+\contentsline {subsection}{\numberline {1.5.1}Configuring a GPIO Pin to Output and Blink an LED}{35}{subsection.1.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.2}Configuring a GPIO Pin to Input and Reading a Button}{33}{subsection.1.5.2}
+\contentsline {subsubsection}{Converting the HAL Library Calls to Register Access}{35}{section*.57}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Changing to the New LEDs}{36}{section*.58}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.2}Configuring a GPIO Pin to Input and Reading a Button}{36}{subsection.1.5.2}
 \contentsfinish 
