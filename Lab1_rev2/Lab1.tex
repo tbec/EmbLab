@@ -115,14 +115,14 @@ One unique aspect of embedded systems programming is that the generated code typ
 The STM32F072 Discovery board is a low-cost environment which provides all of the hardware you need to start developing basic projects. There are four main parts of the Discovery board: 
 
 \subsubsection*{STM32F072R8 ARM Cortex-M0 Processor ({\color{yellow!80!black}YELLOW})}
-The STM32F072R8 features an ARM Cortex-M0 RISC core that can operate up to 48 MHz clock frequency. It has 16 Kbytes of static RAM and 128 Kbytes of Flash memory for program and data storage. It operates on voltages between 2.0 and 3.6 V in a 64-pin low-quad-flat-pack (LQFP) package. Typically these labs will use STM32F0 as a shorter name for the STM32F072R8.
+The STM32F072R8 features an ARM Cortex-M0 RISC core that can operate up to 48 MHz clock frequency. It has 16 Kbytes of static RAM and 128 Kbytes of Flash memory for program and data storage. It operates on voltages between 2.0 and 3.6 V in a 64-pin low-quad-flat-pack (LQFP) package. Typically these labs will use STM32F0 as a shorter name for the STM32F072RB.
 
 The STM32F072R8 processor's name can be broken down into a couple of different parts. These parts identify the processor family to which it belongs, its storage capabilities, and chip package which the device possesses.
 
 \begin{itemize}
     \item \textbf{STM32F0} -- Identifies the chip as a Cortex-M0 produced by ST Microelectronics
     \item \textbf{72} -- Specifies the device as part of the STM32F0x2 sub-family; each sub-family has minor differences in design and available peripherals.
-    \item \textbf{R8} -- Indicates the FLASH (program storage) capacity and number of pins on the chip.  
+    \item \textbf{RB} -- Indicates the FLASH (program storage) capacity and number of pins on the chip.  
 \end{itemize} 
 %\begin{description}
 %    \item [STM32F0] -- Identifies the chip as a Cortex-M0 produced by ST Microelectronics
@@ -205,13 +205,13 @@ Launch the \textbf{STM32CubeMX (STMCube)} utility either from the start menu ent
 
 % REVISE
 \noindent
-The \textit{New Project} window should open\textemdash here, select the particular STM32 device for which STMCube will generate a project. The processor in use on the STM32F072 Discovery board is the STM32F072R8. You can quickly narrow down the available selections by selecting the following criteria in the \textit{MCU Filters} section.
+The \textit{New Project} window should open\textemdash here, select the particular STM32 device for which STMCube will generate a project. The processor in use on the STM32F072 Discovery board is the STM32F072RB. You can quickly narrow down the available selections by selecting the following criteria in the \textit{MCU Filters} section.
 \begin{itemize}
 	\item Select \textbf{STM32F0} in the \textit{Series} filter
 	\item Select \textbf{STM32F0x2} in the \textit{Lines} filter
 	\item Select \textbf{LQFP64} in the \textit{Package} filter
 \end{itemize}
-At this point, there should only be a few choices available, select \textbf{STM32F072R8Tx} and press the \textbf{OK} button. Figure \vref{cube_newProj} shows the new project window with the appropriate filters applied.
+At this point, there should only be a few choices available, select \textbf{STM32F072RBTx} and press the \textbf{OK} button. Figure \vref{cube_newProj} shows the new project window with the appropriate filters applied.
 
 \begin{figure}[h]
 	\centering\includegraphics[width=\textwidth]{cube_newProj}
