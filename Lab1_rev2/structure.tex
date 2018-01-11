@@ -6,6 +6,8 @@
 % Original author:
 % Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
 % Vel (vel@latextemplates.com)
+%
+% Additional modifications and partial rewrite by Brent Mellor
 % 
 % This file has been downloaded from:
 % http://www.LaTeXTemplates.com
@@ -19,8 +21,7 @@
 %	VARIOUS REQUIRED PACKAGES AND CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\usepackage[top=3cm,bottom=3cm,left=5.5cm,right=3cm,headsep=10pt,letterpaper,asymmetric]{geometry} % Page margins
-% Could use 6cm margin on left 
+\usepackage[top=3cm,bottom=3cm,left=3cm,right=3cm,headsep=10pt,letterpaper]{geometry} % Page margins
 
 \usepackage{graphicx} % Required for including pictures
 \graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
@@ -37,19 +38,8 @@
 \usepackage{booktabs} % Required for nicer horizontal rules in tables
 
 \usepackage{xcolor} % Required for specifying colors by name
-%\definecolor{rust}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
-\definecolor{rust}{RGB}{153, 0, 0} % Define alternate red color
-
-\usepackage{pdftexcmds}
-
-\usepackage{varioref}
-\addto\extrasenglish{% page 5 of varioref's manual
-    \renewcommand\reftextfaceafter{on the following page}%
-    \renewcommand\reftextafter {on the next page}%
-    \renewcommand\reftextfacebefore{on the previous page}%
-    \renewcommand\reftextbefore {on the previous page}%
-}
-
+\definecolor{rust}{RGB}{153, 0, 0} % Define the red color used for highlighting throughout the book
+\definecolor{greenrust}{RGB}{0, 153, 0} % Define the red color used for highlighting throughout the book
 %----------------------------------------------------------------------------------------
 %	FONTS
 %----------------------------------------------------------------------------------------
@@ -61,8 +51,7 @@
 \usepackage{microtype} % Slightly tweak font spacing for aesthetics
 \usepackage[utf8]{inputenc} % Required for including letters with accents
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
-\usepackage{relsize} % Allow relative font sizing
-\renewcommand\RSlargest{100pt} 
+
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY AND INDEX
 %----------------------------------------------------------------------------------------
@@ -74,6 +63,8 @@
 \usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
 \usepackage{makeidx} % Required to make an index
 \makeindex % Tells LaTeX to create the files required for indexing
+
+
 
 %----------------------------------------------------------------------------------------
 %	MAIN TABLE OF CONTENTS
@@ -161,13 +152,17 @@
 \usepackage{fancyhdr} % Required for header and footer configuration
 
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
-\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
+
+\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\ #1}{}} % Chapter text font settings
+
+% \renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
 \fancyhf{} \fancyhead[LE,RO]{\sffamily\normalsize\thepage} % Font setting for the page number in the header
-\fancyhead[LO]{\rightmark} % Print the nearest section name on the left side of odd pages
+\fancyhead[LO]{\leftmark} % Print the nearest section name on the left side of odd pages
 \fancyhead[RE]{\leftmark} % Print the current chapter name on the right side of even pages
 \renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
 \addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
+
+
 \renewcommand{\footrulewidth}{0pt} % Removes the rule in the footer
 \fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} % Style for when a plain pagestyle is specified
 
@@ -204,6 +199,20 @@
 {\small\sffamily\color{rust}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
 \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
 \renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+% Boxed/framed environments
+\newtheoremstyle{rustnumbox2}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{rust}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{greenrust}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+	\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
 
 \newtheoremstyle{blacknumex}% Theorem style name
 {5pt}% Space above
@@ -246,9 +255,10 @@
 \numberwithin{dummy}{section}
 \theoremstyle{rustnumbox}
 \newtheorem{theoremeT}[dummy]{Theorem}
-\newtheorem{assignment}{Assignment}[chapter]
-
-\newtheorem{exerciseT}{Exercise}[chapter]
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{exerciseT}{}[chapter]
+\theoremstyle{rustnumbox2}
+\newtheorem{assignmentT}{}[chapter]
 \theoremstyle{blacknumex}
 \newtheorem{exampleT}{Example}[chapter]
 \theoremstyle{blacknumbox}
@@ -293,6 +303,23 @@ leftmargin=0cm,
 rightmargin=0cm,
 linewidth=4pt]{eBox}	
 
+% Assignment box	  
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=greenrust!10,
+linecolor=greenrust,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt]{aBox}	
+
 % Definition box
 \newmdenv[skipabove=7pt,
 skipbelow=7pt,
@@ -328,7 +355,8 @@ innerbottommargin=5pt]{cBox}
 
 % Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
 \newenvironment{theorem}{\begin{tBox}\begin{theoremeT}}{\end{theoremeT}\end{tBox}}
-\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{rust}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
+\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{rust}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				
+\newenvironment{assignment}{\begin{aBox}\begin{assignmentT}}{\hfill{\color{greenrust}\tiny\ensuremath{\blacksquare}}\end{assignmentT}\end{aBox}}				  
 \newenvironment{definition}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}	
 \newenvironment{example}{\begin{exampleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exampleT}}		
 \newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}	
@@ -342,7 +370,7 @@ innerbottommargin=5pt]{cBox}
 			\leftmargin=35pt % Indentation on the left
 			\rightmargin=25pt}\item\ignorespaces % Indentation on the right
 		\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
-			\node[draw=rust!60,line width=1pt,circle,fill=rust!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{rust}{\textbf{!}}};\end{tikzpicture}} 
+			\node[draw=rust!60,line width=1pt,circle,fill=rust!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{rust}{\textbf{!}}};\end{tikzpicture}} % Orange R in a circle
 		\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
 
 %----------------------------------------------------------------------------------------
@@ -362,45 +390,12 @@ innerbottommargin=5pt]{cBox}
 %----------------------------------------------------------------------------------------
 
 \makeatletter
-
-% just bottom line
-%\newmdenv[topline=false,leftline=false,rightline=false]{test123}
-
-%\newmdenv[
-%rightline=false, leftline=false, topline=false, bottomline=true,
-%linecolor=rust, linewidth=4pt
-%]{sectionUnderline}
-
-% Adjusts all numbering for sections and subsections
-\renewcommand{\@seccntformat}[1]{  
-    \ifnum\pdf@strcmp{#1}{section}=\z@ 
-    
-    %\llap{\colorbox{gray!15}{\makebox[3.25cm][r]{\textcolor{gray}{\textsc{\@nameuse{secTypeName}}\hspace{0.5em}\relsize{1.25}\textcolor{rust}{\csname the#1\endcsname}}}}\hspace{.5em}}
-    \llap{
-        %\begin{sectionUnderline}
-            \makebox[3.25cm][r]{\textcolor{gray}{\textsc{\@nameuse{secTypeName}}\hspace{0.5em}\relsize{1.25}\textcolor{rust}{\csname the#1\endcsname}}}
-            \textcolor{rust}{\hspace{-3.25cm}\rule[-.2cm]{3.13cm}{2pt}}
-        %\end{sectionUnderline}
-        \hspace{.5em}
-    }
-    \else
-    \llap{\textcolor{rust}{\csname the#1\endcsname}\hspace{1em}}%
-    \fi 
-   % \llap{\textcolor{rust}{\csname the#1\endcsname}\hspace{1em}}
-}  % hspace controls spacing of section number to section name    
-
-
-\newcommand{\setSectionType}[1]{
-    \@namedef{secTypeName}{#1}
-}
-        
-\renewcommand{\section}{\@startsection{section}{1}{-8pt}
-{-5ex \@plus -1ex \@minus -.2ex}
-{2.0ex \@plus.2ex }
+\renewcommand{\@seccntformat}[1]{\llap{\textcolor{rust}{\csname the#1\endcsname}\hspace{1em}}}                    
+\renewcommand{\section}{\@startsection{section}{1}{\z@}
+{-4ex \@plus -1ex \@minus -.4ex}
+{1ex \@plus.2ex }
 {\normalfont\large\sffamily\bfseries}}
-
-
-\renewcommand{\subsection}{\@startsection {subsection}{2}{-3pt}
+\renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
 {-3ex \@plus -0.1ex \@minus -.4ex}
 {0.5ex \@plus.2ex }
 {\normalfont\sffamily\bfseries}}
@@ -498,18 +493,9 @@ innerbottommargin=5pt]{cBox}
 \node[anchor=north west,inner sep=0pt] at (0,0) {\ifusechapterimage\includegraphics[width=\paperwidth]{\thechapterimage}\fi};
 %\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=rust,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
 
-%%%%% Chapter text sizing
-%\draw[anchor=west] (\Gm@lmargin-1.3cm,-4cm) node [line width=2pt,rounded corners=15pt,draw=rust,fill=white,fill opacity=0.75,inner sep=15pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (\Gm@lmargin,-4cm) node [line width=2pt,rounded corners=15pt,draw=rust,fill=white,fill opacity=0.75,inner sep=15pt]{\strut\makebox[22cm]{}};
 
-%\draw[anchor=west] (\Gm@lmargin-1cm,-4.1cm) node {\huge\sffamily\bfseries\color{black}\thechapter. #1\strut};
-
-% Use larger chapter number
-
-\draw[anchor=west] (\Gm@lmargin-1.3cm,-3.9cm) node [line width=2pt,rounded corners=8pt,draw=rust,fill=white,fill opacity=0.75,inner sep=15pt]{\strut\makebox[22cm]{}};
-
-\draw[anchor=west] (\Gm@lmargin-1cm,-4.0cm) node {\huge\sffamily\bfseries\color{black}{\relsize{2}\thechapter. }#1\strut};
-
-
+\draw[anchor=west] (\Gm@lmargin+.3cm,-4cm) node {\huge\sffamily\bfseries\color{black}\thechapter. #1\strut};
 \end{tikzpicture}};
 \end{tikzpicture}
 \else
@@ -526,7 +512,7 @@ innerbottommargin=5pt]{cBox}
 \end{tikzpicture}
 %\fi\fi\par\vspace*{270\p@}}}
 
-\fi\fi\par\vspace*{150\p@}}}
+\fi\fi\par\vspace*{100\p@}}}
 
 %-------------------------------------------
 
@@ -547,7 +533,7 @@ innerbottommargin=5pt]{cBox}
 %----------------------------------------------------------------------------------------
 
 \usepackage{hyperref}
-\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor= rust,bookmarks=true,bookmarksopen=false,pdftitle={Lab Manual},pdfauthor={Brent Mellor}}
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor= rust,bookmarks=true,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
 \usepackage{bookmark}
 \bookmarksetup{
 open,

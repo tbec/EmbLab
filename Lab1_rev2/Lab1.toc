@@ -4,43 +4,45 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {0}The STM32F072 Discovery and Toolchain}{3}{chapter.0}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.1}Introduction to the STM32F072 Discovery Board}{3}{section.0.1}
+\contentsline {section}{\numberline {0.1}Introduction to the Lab Layout}{3}{section.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.2}ARM Development Toolchain}{6}{section.0.2}
+\contentsline {section}{\numberline {0.2}\color {orange}Introduction to the STM32F072 Discovery Board}{4}{section.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.3}Creating Your First Project}{7}{section.0.3}
+\contentsline {section}{\numberline {0.3}\color {orange}ARM Development Toolchain}{7}{section.0.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {0.3.1}Generating a Project in STM32CubeMX}{7}{subsection.0.3.1}
+\contentsline {section}{\numberline {0.4}Creating Your First Project}{8}{section.0.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {0.3.2}Exploring the Project in {\textmu }Vision}{10}{subsection.0.3.2}
+\contentsline {subsection}{\numberline {0.4.1}Generating a Project in STM32CubeMX}{8}{subsection.0.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {0.3.3}Compiling and Loading a Demo Program }{11}{subsection.0.3.3}
+\contentsline {subsection}{\numberline {0.4.2}\color {orange}Exploring the Project in {\textmu }Vision}{11}{subsection.0.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Auto-Generated Elements in Main.c}{11}{section*.24}
+\contentsline {subsection}{\numberline {0.4.3}\color {orange}Compiling and Loading a Demo Program }{12}{subsection.0.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Blinky Example Code}{12}{section*.25}
+\contentsline {subsubsection}{Auto-Generated Elements in Main.c}{12}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Memory-Mapped Peripherals and the GPIO}{15}{chapter.1}
+\contentsline {subsubsection}{\color {orange}Blinky Example Code}{14}{section*.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Overview}{15}{section.1.1}
+\contentsline {chapter}{\numberline {1}Memory-Mapped Peripherals and the GPIO}{16}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}Basic Design of an Embedded Program}{15}{section.1.2}
+\contentsline {section}{\numberline {1.1}Overview}{16}{section.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Introduction to Device Peripherals}{16}{section.1.3}
+\contentsline {section}{\numberline {1.2}\color {orange}Basic Design of an Embedded Program}{16}{section.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.3.1}Memory-Mapped Peripherals on the STM32F0}{16}{subsection.1.3.1}
+\contentsline {section}{\numberline {1.3}\color {orange}Introduction to Device Peripherals}{18}{section.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.3.2}Differences Between ARM-Core and Device Peripherals}{19}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.1}\color {orange}Memory-Mapped Peripherals on the STM32F0}{18}{subsection.1.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.2}\color {orange}Differences Between ARM-Core and Device Peripherals}{18}{subsection.1.3.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3.3}Device Datasheets and Manuals}{20}{subsection.1.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.4}Using Peripheral Control Registers}{20}{section.1.4}
+\contentsline {section}{\numberline {1.4}Using Peripheral Control Registers}{21}{section.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4.1}The General Purpose Input-Output Peripheral (GPIO)}{20}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.1}The General Purpose Input-Output Peripheral (GPIO)}{21}{subsection.1.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{GPIO Port Mode Register (GPIOx\_MODER)}{22}{section*.31}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{GPIO port output type register (GPIOx\_OTYPER)}{23}{section*.33}
+\contentsline {subsubsection}{GPIO port output type register (GPIOx\_OTYPER)}{24}{section*.33}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{GPIO port output speed register (GPIOx\_OSPEEDR)}{24}{section*.34}
 \defcounter {refsection}{0}\relax 
@@ -48,9 +50,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{GPIO port input data register (GPIOx\_IDR)}{24}{section*.36}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{GPIO port output data register (GPIOx\_ODR)}{25}{section*.37}
+\contentsline {subsubsection}{GPIO port output data register (GPIOx\_ODR)}{24}{section*.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{GPIO port bit set/reset register (GPIOx\_BSRR)}{25}{section*.38}
+\contentsline {subsubsection}{GPIO port bit set/reset register (GPIOx\_BSRR)}{24}{section*.38}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{GPIO port configuration lock register (GPIOx\_LCKR)}{25}{section*.39}
 \defcounter {refsection}{0}\relax 
@@ -58,17 +60,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{GPIO port bit reset register (GPIOx\_BRR)}{25}{section*.41}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4.2}Finding Register Definitions in ST's Header Files}{26}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.2}Finding Register Definitions in ST's Header Files}{25}{subsection.1.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Searching the ``stm32f072xb.h'' File}{27}{section*.43}
+\contentsline {subsubsection}{Searching the \textit {stm32f072xb.h} File}{26}{section*.43}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4.3}Bitwise Operations on Peripheral Registers}{28}{subsection.1.4.3}
+\contentsline {subsection}{\numberline {1.4.3}Bitwise Operations on Peripheral Registers}{27}{subsection.1.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Setting bits}{28}{section*.45}
+\contentsline {subsubsection}{Setting bits}{27}{section*.45}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Clearing bits}{28}{section*.46}
+\contentsline {subsubsection}{Clearing bits}{27}{section*.46}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Inverting/Toggling bits}{28}{section*.47}
+\contentsline {subsubsection}{Inverting/Toggling bits}{27}{section*.47}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Building Bitmasks Easily}{28}{section*.48}
 \defcounter {refsection}{0}\relax 
@@ -76,19 +78,23 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.4.4}Enabling the System Clock to Device Peripherals}{30}{subsection.1.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4.5}Slowing the System Down}{31}{subsection.1.4.5}
+\contentsline {subsection}{\numberline {1.4.5}Slowing the System Down}{30}{subsection.1.4.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Delay Loops}{31}{section*.52}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Hardware SysTick Delay}{32}{section*.53}
+\contentsline {subsubsection}{Hardware SysTick Delay}{31}{section*.53}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.5}Lab Assignment: Writing Basic I/O Code}{32}{section.1.5}
+\contentsline {subsection}{\numberline {1.4.6}\color {orange}Standard Integer Types}{31}{subsection.1.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.1}Configuring a GPIO Pin to Output and Blink an LED}{32}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.4.7}``Debouncing'' External Signals}{32}{subsection.1.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Converting the HAL Library Calls to Register Access}{32}{section*.54}
+\contentsline {section}{\numberline {1.5}\color {blue}Lab Assignment: Writing Basic I/O Code}{32}{section.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Changing to the New LEDs}{33}{section*.55}
+\contentsline {subsection}{\numberline {1.5.1}Configuring a GPIO Pin to Output and Blink an LED}{33}{subsection.1.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.2}Configuring a GPIO Pin to Input and Reading a Button}{33}{subsection.1.5.2}
+\contentsline {subsubsection}{Converting the HAL Library Calls to Register Access}{33}{section*.57}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Changing to the New LEDs}{35}{section*.58}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.2}Configuring a GPIO Pin to Input and Reading a Button}{35}{subsection.1.5.2}
 \contentsfinish 
