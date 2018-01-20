@@ -88,7 +88,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%                                                                                         %%%%
-%%%%       Chapter 1: The STM32F072 Discovery and Toolchain                                  %%%%
+%%%%       Chapter 0: The STM32F072 Discovery and Toolchain                                  %%%%
 %%%%                                                                                         %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{chapter}{-1} % Manually adjust chapter counter to number before desired chapter heading
@@ -135,16 +135,17 @@ Please include the files that you modified in the lab (usually \textit{main.c} a
 \section{\color{orange}Introduction to the STM32F072 Discovery Board}\index{Introduction to the STM32F072 Discovery Board}
 This lab introduces the STM32F072 Discovery board from ST Microelectronics and guides through the creation of a simple application. The exercises in this lab form the basic starting point for all future activities. After completing this lab, you will understand the basic operation and structure of an MDK:ARM code project and be able to use ST provided utilities to generate a pre-configured project template. 
 
-\begin{figure}[h]
+\numberwithin{figure}{chapter}\begin{figure}[h]
 	\centering\includegraphics[width=\textwidth]{discovery_marked}
 	\caption{STM32F072 Discovery Board from ST Microelectronics}
+	\label{discovery_marked_col}
 \end{figure}
 
 % PASSIVE VOICE
 % Resolved?
 One unique aspect of embedded systems programming is that the generated code typically does not run on the system used to develop the software; instead, the compiled binary is loaded onto an external device for testing and debugging. You'll be using a generic test board containing a processor and peripherals to target during development. 
 
-The STM32F072 Discovery board is a low-cost environment which provides all of the hardware you need to start developing basic projects. There are four main parts of the Discovery board: 
+The STM32F072 Discovery board is a low-cost environment which provides all of the hardware you need to start developing basic projects. Figure \ref{discovery_marked_col} divides the board into four main sections, listed and described below: 
 
 \subsubsection*{STM32F072R8 ARM Cortex-M0 Processor ({\color{yellow!80!black}YELLOW})}
 The STM32F072R8 features an ARM Cortex-M0 RISC core that can operate up to 48 MHz clock frequency. It has 16 Kbytes of static RAM and 128 Kbytes of Flash memory for program and data storage. It operates on voltages between 2.0 and 3.6 V in a 64-pin low-quad-flat-pack (LQFP) package. Typically these labs will use STM32F0 as a shorter name for the STM32F072RB.
@@ -411,11 +412,11 @@ Congratulations, you are running a custom application on the STM32F0!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%                                                                                         %%%%
-%%%%       Chapter 2: Memory-Mapped Peripherals and the GPIO                                 %%%%
+%%%%       Chapter 1: Memory-Mapped Peripherals and the GPIO                                 %%%%
 %%%%                                                                                         %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapterimage{chapter_head_2.png} % Chapter heading image
-\chapter{Memory-Mapped Peripherals and the GPIO}
+\chapter{Lab 1: Memory-Mapped Peripherals and the GPIO}
 
 %\setSectionType{Intro}
 \section{Overview}
